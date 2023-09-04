@@ -4,8 +4,7 @@ const $cupcakeList = $("#cupcake-list");
 const $cupcakeForm = $("#add-cupcake-form");
 
 
-//Generate cupcake list on page load
-populateCupcakeList();
+
 
 
 /** Gets list of cupcakes from API */
@@ -69,3 +68,6 @@ async function handleCupcakeSubmit(evt) {
 
 
 $cupcakeForm.on("submit", handleCupcakeSubmit);
+
+//Generate cupcake list on page load
+populateCupcakeList();
