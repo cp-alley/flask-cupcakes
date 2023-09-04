@@ -3,7 +3,7 @@
 
 import os
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 
 from models import connect_db, db, Cupcake
@@ -23,6 +23,13 @@ connect_db(app)
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 toolbar = DebugToolbarExtension(app)
+
+
+
+@app.get("/")
+def show_homepage():
+    """Display the homepage."""
+    return render_template("home.html")
 
 
 @app.get('/api/cupcakes')
