@@ -5,26 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cupcakes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
 <body>
-  <ul id="cupcake-list"></ul>
+  <main class="container">
+    <h1>Cupcakes</h1>
+    <section class="container">
 
-  <form action="" method="POST" id="add-cupcake-form">
-    <label for="flavor">Flavor:</label>
-    <input type="text" name="flavor" id="flavor-input">
-    <label for="size">Size:</label>
-    <input type="text" name="size" id="size-input">
-    <label for="rating">Rating:</label>
-    <input type="text" name="rating" id="rating-input">
-    <label for="image_url">Image URL:</label>
-    <input type="text" name="image_url" id="image-input">
-    <button type="submit">Create Cupcake</button>
-  </form>
+      <form action="" method="POST" id="add-cupcake-form">
+        <label class="form-label" for="flavor">Flavor:</label>
+        <input class="form-control" type="text" name="flavor" id="flavor-input">
+        <label class="form-label" for="size">Size:</label>
+        <input class="form-control" type="text" name="size" id="size-input">
+        <label class="form-label" for="rating">Rating:</label>
+        <input class="form-control" type="text" name="rating" id="rating-input">
+        <label class="form-label" for="image_url">Image URL:</label>
+        <input class="form-control" type="text" name="image_url" id="image-input">
+        <button class="btn btn-primary mt-3" type="submit">Create Cupcake</button>
+      </form>
+    </section>
+    <section class="container">
 
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      <ul class="list-group-horizontal list-group" id="cupcake-list"></ul>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
-  <script src="/static/js/cupcake.js"></script>
+    <script src="/static/js/cupcake.js"></script>
+  </main>
 </body>
 
 </html>
