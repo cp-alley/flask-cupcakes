@@ -3,6 +3,12 @@
 const $cupcakeList = $("#cupcake-list");
 const $cupcakeForm = $("#add-cupcake-form");
 
+
+//Generate cupcake list on page load
+populateCupcakeList();
+
+
+/** Gets list of cupcakes from API */
 async function getCupcakes() {
   const response = await fetch("/api/cupcakes");
   const data = await response.json();
@@ -10,31 +16,40 @@ async function getCupcakes() {
 }
 
 
-async function addCupcakesToList() {
+/** Add all cupcakes to home page */
+async function populateCupcakeList() {
+  $cupcakeList.empty();
   const cupcakes = await getCupcakes();
 
   for (const { flavor, size, rating, image_url } of cupcakes["cupcakes"]) {
-    const $li = $(`<li><div>
-    <h3>${flavor}</h3>
-    <p>${size}</p>
-    <p>${rating}</p>
-    <img src="${image_url} alt="Cupcake Image">
-    </div></li>`);
+    const $li = createCupcakeMarkup(flavor, size, rating, image_url);
 
-    $cupcakeList.append($li);
+    $cupcakeList.prepend($li);
   }
 }
 
-addCupcakesToList();
+
+/** Generate and return markup for a cupcake */
+function createCupcakeMarkup(flavor, size, rating, imageUrl) {
+  const $li = $(`<li class="list-group-item"><div class="container">
+    <h3>${flavor}</h3>
+    <p>${size}</p>
+    <p>${rating}</p>
+    <img src="${imageUrl}" alt="Cupcake Image" width="100" class="img-thumbnail">
+    </div></li>`);
+
+  return $li;
+}
 
 
+/** Submit cupcake form data to API and add cupcake to list */
 async function handleCupcakeSubmit(evt) {
   evt.preventDefault();
 
   const flavor = $("#flavor-input").val();
-  const size = $("#flavor-input").val();
-  const rating = $("#flavor-input").val();
-  const imageUrl = $("#flavor-input").val();
+  const size = $("#size-input").val();
+  const rating = $("#rating-input").val();
+  const imageUrl = $("#image-input").val();
 
   await fetch("/api/cupcakes", {
     method: "POST",
@@ -44,8 +59,8 @@ async function handleCupcakeSubmit(evt) {
     }
   });
 
-
-  addCupcakesToList();
+  const $li = createCupcakeMarkup(flavor, size, rating, imageUrl);
+  $cupcakeList.prepend($li);
 }
 
 
