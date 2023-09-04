@@ -49,7 +49,7 @@ def create_cupcake():
     flavor = request.json["flavor"]
     size = request.json["size"]
     rating = request.json["rating"]
-    image_url = request.json.get("image_url")
+    image_url = request.json.get("image_url") or None
 
     new_cupcake = Cupcake(flavor=flavor, size=size,
                           rating=rating, image_url=image_url)

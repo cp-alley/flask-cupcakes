@@ -6,6 +6,7 @@ db = SQLAlchemy()
 
 DEFAULT_IMG_URL = 'https://tinyurl.com/demo-cupcake'
 
+
 def connect_db(app):
     """Connect this database to provided Flask app.
 
@@ -15,6 +16,7 @@ def connect_db(app):
     app.app_context().push()
     db.app = app
     db.init_app(app)
+
 
 class Cupcake(db.Model):
     """Cupcake model."""
@@ -48,6 +50,7 @@ class Cupcake(db.Model):
     )
 
     def serialize(self):
+        """Convert instance object to python dictionary and return it."""
         return {
             'id': self.id,
             'flavor': self.flavor,
