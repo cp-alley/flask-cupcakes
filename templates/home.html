@@ -16,11 +16,11 @@
 
       <form action="" method="POST" id="add-cupcake-form">
         <label class="form-label" for="flavor">Flavor:</label>
-        <input class="form-control" type="text" name="flavor" id="flavor-input">
+        <input class="form-control" type="text" name="flavor" id="flavor-input" required>
         <label class="form-label" for="size">Size:</label>
-        <input class="form-control" type="text" name="size" id="size-input">
+        <input class="form-control" type="text" name="size" id="size-input" required>
         <label class="form-label" for="rating">Rating:</label>
-        <input class="form-control" type="text" name="rating" id="rating-input">
+        <input class="form-control" type="text" name="rating" id="rating-input" required>
         <label class="form-label" for="image_url">Image URL:</label>
         <input class="form-control" type="text" name="image_url" id="image-input">
         <button class="btn btn-primary mt-3" type="submit">Create Cupcake</button>
@@ -28,11 +28,11 @@
     </section>
     <section class="container">
 
-      <ul class="list-group-horizontal list-group" id="cupcake-list"></ul>
+      <ul class="list-group-flush list-group" id="cupcake-list"></ul>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="/static/js/cupcake.js"></script>
   </main>
 </body>

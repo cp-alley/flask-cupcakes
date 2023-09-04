@@ -31,11 +31,15 @@ async function populateCupcakeList() {
 
 /** Generate and return markup for a cupcake */
 function createCupcakeMarkup(flavor, size, rating, imageUrl) {
-  const $li = $(`<li class="list-group-item"><div class="container">
-    <h3>${flavor}</h3>
-    <p>${size}</p>
-    <p>${rating}</p>
-    <img src="${imageUrl}" alt="Cupcake Image" width="100" class="img-thumbnail">
+  const $li = $(`<li class="list-group-item"><div class="row">
+    <div class="col-6">
+      <h3>Flavor: ${flavor}</h3>
+      <p>Size: ${size}</p>
+      <p>Rating: ${rating}</p>
+    </div>
+    <div class="col-6">
+      <img src="${imageUrl}" alt="Cupcake Image" width="100" class="img-thumbnail">
+    </div>
     </div></li>`);
 
   return $li;
