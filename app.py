@@ -31,3 +31,4 @@ def show_all_cupcakes():
     serialized = [c.serialize() for c in cupcakes]
 
     return jsonify(cupcakes=serialized)
+
