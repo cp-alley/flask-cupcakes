@@ -67,18 +67,10 @@ def update_cupcake(cupcake_id):
     """Update a cupcake and return JSON."""
     cupcake = Cupcake.query.get_or_404(cupcake_id)
 
-    flavor = request.json.get("flavor")
-    size = request.json.get("size")
-    rating = request.json.get("rating")
-    image_url = request.json.get("image_url")
-
-    # for key, value in request.json.items():
-    #     cupcake[key] = value
-
-    cupcake.flavor = flavor or cupcake.flavor
-    cupcake.size = size or cupcake.size
-    cupcake.rating = rating or cupcake.rating
-    cupcake.image_url = image_url or cupcake.image_url
+    cupcake.flavor = request.json.get("flavor", cupcake.flavor)
+    cupcake.size = request.json.get("size", cupcake.size)
+    cupcake.rating = request.json.get("rating", cupcake.rating)
+    cupcake.image_url = request.json.get("image_url", cupcake.image_url)
 
     db.session.commit()
 
@@ -95,4 +87,4 @@ def delete_cupcake(cupcake_id):
     db.session.delete(cupcake)
     db.session.commit()
 
-    return jsonify(deleted=[cupcake_id])
+    return jsonify(deleted=cupcake_id)
